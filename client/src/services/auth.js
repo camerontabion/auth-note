@@ -13,7 +13,7 @@ const signup = async (userData) => {
 };
 
 const login = async (userInfo) => {
-  const res = await fetch('/api/auth/login', {
+  const res = await fetch(`${baseUrl}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const login = async (userInfo) => {
 };
 
 const logout = async () => {
-  const res = await fetch('/api/auth/logout', {
+  const res = await fetch(`${baseUrl}/logout`, {
     method: 'POST',
     credentials: 'include',
   });
@@ -34,7 +34,7 @@ const logout = async () => {
 };
 
 const authenticate = async () => {
-  const res = await fetch('/api/auth', { credentials: 'include' });
+  const res = await fetch(baseUrl, { credentials: 'include' });
 
   return res.json();
 };
