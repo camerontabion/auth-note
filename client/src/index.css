@@ -164,6 +164,7 @@ body {
   border: 0;
   background-color: var(--dark-shade);
   color: var(--light-shade);
+  cursor: pointer;
 }
 
 .form__button:disabled {
