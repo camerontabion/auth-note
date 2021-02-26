@@ -11,14 +11,6 @@ const Header = () => {
         <NavLink exact to="/">Auth Notes</NavLink>
       </h1>
       <nav className="main-header__nav">
-        <NavLink
-          exact
-          to="/"
-          className="main-header__link"
-          activeClassName="main-header__link--current"
-        >
-          Home
-        </NavLink>
         {!user ? (
           <>
             <NavLink
