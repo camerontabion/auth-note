@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import SignupForm from './SignupForm';
 import useUserContext from '../../hooks/useUserContext';
 
