@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import SignupForm from './SignupForm';
 import useUserContext from '../../hooks/useUserContext';
@@ -14,6 +14,10 @@ const Signup = () => {
         <title>Auth Notes | Signup</title>
       </Helmet>
       <SignupForm signup={signup} />
+      <div className="signup__login-link">
+        <span>Already have an account?</span>
+        <Link to="/login">Login</Link>
+      </div>
     </div>
   );
 };
