@@ -16,6 +16,7 @@ const schema = {
     }),
   email: Joi.string()
     .email()
+    .lowercase()
     .required(),
   password: Joi.string()
     .min(6)
@@ -27,8 +28,7 @@ const loginSchema = Joi.object({ email: schema.email, password: schema.password 
 
 router.post('/signup', async (req, res, next) => {
   try {
-    await signupSchema.validateAsync(req.body);
-    const { username, email, password } = req.body;
+    const { username, email, password } = await signupSchema.validateAsync(req.body);
 
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser?.username === username) {
@@ -59,8 +59,7 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
   try {
-    await loginSchema.validateAsync(req.body);
-    const { email, password } = req.body;
+    const { email, password } = await loginSchema.validateAsync(req.body);
 
     const existingUser = await User.findOne({ email });
     if (!existingUser) {
