@@ -15,6 +15,7 @@ const schema = Joi.object({
     .email({
       tlds: { allow: ['com', 'org', 'net'] },
     })
+    .lowercase()
     .required(),
   password: Joi.string()
     .min(6)
@@ -32,9 +33,8 @@ const SignupForm = ({ signup }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = { username, email, password };
     try {
-      await schema.validateAsync(user);
+      const user = await schema.validateAsync({ username, email, password });
       if (password !== confirmPassword) throw new Error('Passwords do not match!');
       setError('');
       setSubmitting(true);

@@ -7,6 +7,7 @@ const schema = Joi.object({
     .email({
       tlds: { allow: ['com', 'org', 'net'] },
     })
+    .lowercase()
     .required(),
   password: Joi.string()
     .min(6)
@@ -21,9 +22,8 @@ const LoginForm = ({ login }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = { email, password };
     try {
-      await schema.validateAsync(user);
+      const user = await schema.validateAsync({ email, password });
       setError('');
       setSubmitting(true);
       await login(user);
