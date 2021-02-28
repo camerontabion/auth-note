@@ -12,7 +12,7 @@ const transform = (doc, ret) => {
 };
 
 const noteSchema = new mongoose.Schema({
-  content: RequiredString,
+  text: RequiredString,
 }, {
   timestamps: true,
 });
