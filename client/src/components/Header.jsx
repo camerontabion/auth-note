@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import useUserContext from '../hooks/useUserContext';
 
 const Header = () => {
-  const { user } = useUserContext();
+  const { user, logout } = useUserContext();
 
   return (
     <header className="main-header">
@@ -31,14 +31,23 @@ const Header = () => {
             </NavLink>
           </>
         ) : (
-          <NavLink
-            exact
-            to="/dashboard"
-            className="main-header__link"
-            activeClassName="main-header__link--current"
-          >
-            Dashboard
-          </NavLink>
+          <>
+            <NavLink
+              exact
+              to="/dashboard"
+              className="main-header__link"
+              activeClassName="main-header__link--current"
+            >
+              Dashboard
+            </NavLink>
+            <button
+              type="button"
+              onClick={logout}
+              className="main-header__button"
+            >
+              Logout
+            </button>
+          </>
         )}
       </nav>
     </header>

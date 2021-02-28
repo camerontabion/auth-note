@@ -50,11 +50,18 @@ body {
   gap: 2rem;
 }
 
-.main-header__link {
+.main-header__link,
+.main-header__button {
   color: var(--light-shade);
   padding: .2rem 0;
   font-size: var(--small);
   text-decoration: none;
+}
+
+.main-header__button {
+  background: none;
+  outline: none;
+  border: 0;
 }
 
 .main-header__link--current {
@@ -62,27 +69,23 @@ body {
 }
 
 /* Landing */
-.landing,
-.dashboard {
+.landing {
   padding: 4rem;
   max-width: 130rem;
   margin: 0 auto;
   text-align: center;
 }
 
-.landing__title,
-.dashboard__title {
+.landing__title {
   font-size: var(--large);
 }
 
-.landing__subtitle,
-.dashboard__subtitle {
+.landing__subtitle {
   font-size: var(--base);
   margin-bottom: 2rem;
 }
 
-.landing__link,
-.dashboard__logout {
+.landing__link {
   display: inline-block;
   font-size: var(--base);
   text-decoration: none;
