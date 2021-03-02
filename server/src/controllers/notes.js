@@ -18,13 +18,16 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const { text } = await noteSchema.validateAsync(req.body);
+    const note = await noteSchema.validateAsync(req.body);
 
     const user = await User.findOneAndUpdate(
       { email: req.session.email },
       {
         $push: {
-          notes: { text },
+          notes: {
+            $each: [note],
+            $sort: { updatedAt: -1 },
+          },
         },
       },
       { new: true },
