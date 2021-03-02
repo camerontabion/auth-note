@@ -1,18 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import useUserContext from '../../hooks/useUserContext';
+import notesService from '../../services/notes';
+import NoteForm from './NoteForm';
+import NoteList from './NoteList';
 
 const Dashboard = () => {
-  const { user, logout } = useUserContext();
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const initialNotes = await notesService.getAll();
+      setNotes(initialNotes);
+    })();
+  }, []);
+
+  const addNote = async (text) => {
+    const newNotes = await notesService.create(text);
+    setNotes(newNotes);
+  };
+
+  const removeNote = async (id) => {
+    const newNotes = await notesService.remove(id);
+    setNotes(newNotes);
+  };
+
+  const updateNote = async (id, text) => {
+    const newNotes = await notesService.update(id, text);
+    setNotes(newNotes);
+  };
 
   return (
     <div className="dashboard">
       <Helmet>
         <title>Auth Notes | Dashboard</title>
       </Helmet>
-      <h2 className="dashboard__title">{`Hello ${user.username}!`}</h2>
-      <p className="dashboard__subtitle">Fancy meeting you here 😜💖💋👏🌹</p>
-      <button type="button" className="dashboard__logout" onClick={logout}>Logout</button>
+      <NoteForm addNote={addNote} />
+      <NoteList notes={notes} removeNote={removeNote} updateNote={updateNote} />
     </div>
   );
 };

@@ -12,10 +12,8 @@ html {
 
 :root {
   --light-shade: #F8F7F6;
-  --light-accent: #A58791;
-  --main-brand-color: #B29CA5;
+  --main-brand-color: #423740;
   --dark-accent: #8D7788;
-  --dark-shade: #423740;
 
   --largest: 3.157rem;
   --large: 2.369rem;
@@ -31,7 +29,7 @@ body {
 /* Header */
 .main-header {
   padding: 1rem 2rem;
-  background-color: var(--dark-shade);
+  background-color: var(--main-brand-color);
   color: var(--light-shade);
   display: flex;
   align-items: center;
@@ -89,7 +87,7 @@ body {
   display: inline-block;
   font-size: var(--base);
   text-decoration: none;
-  background-color: var(--dark-shade);
+  background-color: var(--main-brand-color);
   color: var(--light-shade);
   padding: .6rem 1rem;
   margin-top: 1rem;
@@ -166,7 +164,7 @@ body {
   padding: 1rem;
   outline: none;
   border: 0;
-  background-color: var(--dark-shade);
+  background-color: var(--main-brand-color);
   color: var(--light-shade);
   cursor: pointer;
 }
@@ -184,4 +182,56 @@ body {
 .notFound {
   text-align: center;
   padding: 2rem;
+}
+
+/* Dashboard */
+.dashboard {
+  padding: 0 2rem;
+}
+
+.notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.note {
+  background-color: var(--main-brand-color);
+  color: var(--light-shade);
+  padding: 1rem;
+  position: relative;
+}
+
+.note__text {
+  font-size: var(--base);
+  font-weight: normal;
+  background-color: var(--main-brand-color);
+  color: var(--light-shade);
+  border: 0;
+  width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note__date {
+  font-size: var(--smallest);
+  font-weight: lighter;
+}
+
+.note__delete {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: .4rem;
+  border-radius: 50%;
+  background: none;
+  color: var(--light-shade);
+  border: 0;
+  cursor: pointer;
+}
+
+.note:hover .note__delete {
+  display: block;
 }
