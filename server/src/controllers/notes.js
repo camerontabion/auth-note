@@ -41,9 +41,21 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const user = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
       { email: req.session.email, 'notes._id': req.params.id },
       { $set: { 'notes.$.text': req.body.text } },
+      { new: true },
+    );
+    const user = await User.findOneAndUpdate(
+      { email: req.session.email },
+      {
+        $push: {
+          notes: {
+            $each: [],
+            $sort: { updatedAt: -1 },
+          },
+        },
+      },
       { new: true },
     );
     res.json(user.notes);
