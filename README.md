@@ -13,19 +13,19 @@ Allows users to create an account and write small notes for reminders/todos.
 ![Landing Page](./screenshots/Landing.png)
 
 ### Signup
-![Landing Page](./screenshots/Signup.png)
+![Signup Page](./screenshots/Signup.png)
 
 ### Signup Error
-![Landing Page](./screenshots/Signup-error.png)
+![Signup Page - Error](./screenshots/Signup-error.png)
 
 ### Login
-![Landing Page](./screenshots/Login.png)
+![Login Page](./screenshots/Login.png)
 
 ### Login Error
-![Landing Page](./screenshots/Login-error.png)
+![Login Page - Error](./screenshots/Login-error.png)
 
 ### Dashboard - create notes
-![Landing Page](./screenshots/Dashboard.png)
+![Dashboard - create notes](./screenshots/Dashboard.png)
 
 ### Dashboard - update and delete notes
-![Landing Page](./screenshots/Dashboard-interactive.png)
+![Dashboard - update and delete notes](./screenshots/Dashboard-interactive.png)
